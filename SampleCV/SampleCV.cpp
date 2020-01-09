@@ -44,8 +44,8 @@ int main()
 	//auto s =  mat.data;
 	//cv::imshow("0", mat);
 	//cv::waitKey();
-
-	FilesDataset<uint8_t, uint8_t,28*28> dataset;
+	vector<string> files{ "","" };
+	FilesDataset<uint8_t, uint8_t, 28 * 28> dataset("D:/dataset/mnist/mnist", {"1","2"});
 
 
 	return 0;
