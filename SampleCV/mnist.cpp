@@ -20,8 +20,6 @@ namespace seraphim {
 				mnist->train_images_bytes_ = mnist->count_train_ * Mnist::image_bytes_;
 				mnist->image_train = new uint8_t[mnist->train_images_bytes_];
 				fs.read(mnist->image_train, mnist->train_images_bytes_);
-
-				
 			}
 			else if (name.compare("t10k-labels") == 0) {
 				assert(mnist->count_train_ == (size - Mnist::label_heat_size_));

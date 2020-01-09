@@ -29,5 +29,11 @@
     <ClInclude Include="mnist.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="bith_iterator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="data_set.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

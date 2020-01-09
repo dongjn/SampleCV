@@ -8,12 +8,11 @@
 #include<thread>
 #include"mnist.h"
 #include"common.h"
+#include"bith_iterator.h"
+#include"data_set.h"
 using namespace std;
 using namespace cv;
 using namespace seraphim;
-int main()
-{
-	auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
 	//boost::asio::io_service service;
 	//std::thread t([&service] {
 	//	for (;;) {
@@ -31,12 +30,22 @@ int main()
 	//std::cout << "main thread::" << std::this_thread::get_id() << std::endl;
 	//t.join();
 	//std::wcout << "exit" << std::endl;
-	auto sample = mnist->getTrainSample(0);
-	Mat mat(28, 28, CV_8UC1, std::get<1>(sample));
-	auto s =  mat.data;
-	cv::imshow("0", mat);
-	cv::waitKey();
+int main()
+{
+	auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
 
+	//auto a = squrt<int, 10000>();
+	//auto b = squrt<int, 1000>();
+	//std::cout << "a=" << a << "|b=" << b << std::endl;
+
+	//Sample<uint32_t, uint32_t, 1024, 1024> e;
+	//auto sample = mnist->getTrainSample(0);
+	//Mat mat(28, 28, CV_8UC1, std::get<1>(sample));
+	//auto s =  mat.data;
+	//cv::imshow("0", mat);
+	//cv::waitKey();
+
+	FilesDataset<uint8_t, uint8_t,28*28> dataset;
 
 
 	return 0;
