@@ -21,6 +21,18 @@
     <ClCompile Include="mnist.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="skia_backed_vk.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vulkan_context.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vulkan_utility.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -33,6 +45,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="data_set.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="skia_backed_vk.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="vulkan_context.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="vulkan_utility.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

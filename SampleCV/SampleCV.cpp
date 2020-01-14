@@ -32,6 +32,7 @@ using namespace seraphim;
 	//std::wcout << "exit" << std::endl;
 int main()
 {
+	
 	auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
 
 	//auto a = squrt<int, 10000>();

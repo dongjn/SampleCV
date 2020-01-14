@@ -5,7 +5,6 @@
 #include<utility>
 #include<boost/filesystem.hpp>
 #include<boost/filesystem/fstream.hpp>
-#include
 namespace seraphim {
 
 	namespace bfs = boost::filesystem;

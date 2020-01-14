@@ -107,9 +107,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,12 +157,20 @@
   <ItemGroup>
     <ClCompile Include="mnist.cpp" />
     <ClCompile Include="SampleCV.cpp" />
+    <ClCompile Include="skia_backed_vk.cpp" />
+    <ClCompile Include="utility.cpp" />
+    <ClCompile Include="vulkan_context.cpp" />
+    <ClCompile Include="vulkan_utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
     <ClInclude Include="bith_iterator.h" />
     <ClInclude Include="data_set.h" />
     <ClInclude Include="mnist.h" />
+    <ClInclude Include="skia_backed_vk.h" />
+    <ClInclude Include="utility.h" />
+    <ClInclude Include="vulkan_context.h" />
+    <ClInclude Include="vulkan_utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
