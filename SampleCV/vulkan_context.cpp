@@ -25,7 +25,7 @@ namespace seraphim {
 
 
 	std::shared_ptr<VulkanContext> VulkanContext::gpVKContext{ nullptr };
-	void *vulkanlib{ nullptr };
+	void* vulkanlib{ nullptr };
 	static uint32_t UINT32MAX = static_cast<uint32_t>(-1);
 
 
@@ -315,15 +315,15 @@ namespace seraphim {
 	 //}
 
 
-	uint32_t VulkanContext::queryMemoryTypeIndex(uint32_t bits,uint32_t requi_properties)
+	uint32_t VulkanContext::queryMemoryTypeIndex(uint32_t bits, uint32_t requi_properties)
 	{
-		
+
 		for (int i = 0; i < dh.memoryProperties.memoryTypeCount; i++) {
-			if ((1  & bits) == 1) {
+			if ((1 & bits) == 1) {
 				if ((dh.memoryProperties.memoryTypes[i].propertyFlags & requi_properties) == requi_properties) {
 					return i;
 				}
-			
+
 			}
 			bits >>= 1;
 		}
@@ -340,16 +340,16 @@ namespace seraphim {
 	 * @param deviceSize
 	 * @param deviceOffset
 	 */
-	//VulkanSkiaBackend::VulkanSkiaBackend(uint32_t w, uint32_t h, uint8_t* b, sk_sp<SkSurface> s, VkImage i, VkDeviceSize deviceSize, VkDeviceSize deviceOffset) :width(w),
-	//	height(h),
-	//	surface(s),
-	//	vkImage(i),
-	//	dstBuffer(b),
-	//	deviceMemorySize(deviceSize),
-	//	deviceMemoryOffset(deviceOffset)
-	//{
-	//	canvas = surface->getCanvas();
-	//}
+	 //VulkanSkiaBackend::VulkanSkiaBackend(uint32_t w, uint32_t h, uint8_t* b, sk_sp<SkSurface> s, VkImage i, VkDeviceSize deviceSize, VkDeviceSize deviceOffset) :width(w),
+	 //	height(h),
+	 //	surface(s),
+	 //	vkImage(i),
+	 //	dstBuffer(b),
+	 //	deviceMemorySize(deviceSize),
+	 //	deviceMemoryOffset(deviceOffset)
+	 //{
+	 //	canvas = surface->getCanvas();
+	 //}
 
 
 	VulkanContext::VulkanContext(HWND w, HINSTANCE h, UINT32 width, UINT32 height) :window(w), module(h), wWidth(width), wHeight(height) {
@@ -358,11 +358,11 @@ namespace seraphim {
 
 			ih.vkInstanceExtensionsName.push_back(VK_KHR_SURFACE_EXTENSION_NAME);
 			ih.vkInstanceExtensionsName.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
-			ih.vkInstanceExtensionsName.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
 
 			dh.vkDeviceExtensionName.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
-			dh.vkDeviceExtensionName.push_back(VK_KHR_BIND_MEMORY_2_EXTENSION_NAME);
 		}
+		ih.vkInstanceExtensionsName.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
+		dh.vkDeviceExtensionName.push_back(VK_KHR_BIND_MEMORY_2_EXTENSION_NAME);
 	}
 
 
@@ -371,7 +371,7 @@ namespace seraphim {
 		//init physical_device
 		initInstance();
 		initDevice();
-		if(hashSurface)
+		if (hashSurface)
 			initPresent();
 		VkFenceCreateInfo fenceCreateInfo;
 		fenceCreateInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
@@ -382,7 +382,7 @@ namespace seraphim {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	void VulkanContext::initInstance()
 	{
@@ -414,7 +414,7 @@ namespace seraphim {
 		vector<VkExtensionProperties> instance_properties(count_extension);
 		vkEnumerateInstanceExtensionProperties(nullptr, &count_extension,
 			instance_properties.data());
-		for (auto &p : instance_properties) {
+		for (auto& p : instance_properties) {
 			printf("MATH_VULKAN", "instance name=%s  version=%d", p.extensionName, p.specVersion);
 
 		}
@@ -440,7 +440,7 @@ namespace seraphim {
 		vkResult = createDebugReport(ih.vkInstance, &callbackCreateInfo, nullptr, &ih.debugReportCallbackExt);
 	}
 	/**
-	 * 
+	 *
 	 */
 	void VulkanContext::initDevice()
 	{
@@ -481,7 +481,7 @@ namespace seraphim {
 		vkGetPhysicalDeviceQueueFamilyProperties(dh.vkPhysicalDevice, &count_queue_family,
 			familyProperties.data());
 		for (uint32_t i = 0; i < familyProperties.size(); i++) {
-			auto &properties = familyProperties[i];
+			auto& properties = familyProperties[i];
 			if (properties.queueCount > 0 && (properties.queueFlags & VK_QUEUE_GRAPHICS_BIT)) {
 				dh.graphicFamily = i;
 			}
@@ -658,7 +658,7 @@ namespace seraphim {
 
 	void VulkanContext::cleanBank(uint32_t image_index) {
 		uint32_t image_count = ph.images.size();
-		VkClearColorValue clear_color[3] = { 
+		VkClearColorValue clear_color[3] = {
 			{
 				{ 1.0f, 0.0f, 0.0f, 1.0f }
 			},
@@ -716,7 +716,7 @@ namespace seraphim {
 			vkBeginCommandBuffer(ph.imageCmdBuffer[i], &cmd_buffer_begin_info);
 			vkCmdPipelineBarrier(ph.imageCmdBuffer[i], VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1, &barrier_from_present_to_clear);
 
-			vkCmdClearColorImage(ph.imageCmdBuffer[i], ph.images[i], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &clear_color[i%3], 1, &image_subresource_range);
+			vkCmdClearColorImage(ph.imageCmdBuffer[i], ph.images[i], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &clear_color[i % 3], 1, &image_subresource_range);
 
 			vkCmdPipelineBarrier(ph.imageCmdBuffer[i], VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT, 0, 0, nullptr, 0, nullptr, 1, &barrier_from_clear_to_present);
 			vkResult = vkEndCommandBuffer(ph.imageCmdBuffer[i]);

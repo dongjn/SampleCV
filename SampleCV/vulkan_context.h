@@ -17,6 +17,7 @@
 #ifdef _WIN32
 typedef HWND T_WINDOW;
 typedef HINSTANCE T_MODULE;
+typedef  uint8_t byte;
 #elif ANDROID
 typedef 
 #endif

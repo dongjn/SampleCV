@@ -10,6 +10,7 @@
 #include"common.h"
 #include"bith_iterator.h"
 #include"data_set.h"
+#include"skia_backed_vk.h"
 using namespace std;
 using namespace cv;
 using namespace seraphim;
@@ -30,11 +31,6 @@ using namespace seraphim;
 	//std::cout << "main thread::" << std::this_thread::get_id() << std::endl;
 	//t.join();
 	//std::wcout << "exit" << std::endl;
-int main()
-{
-	
-	auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
-
 	//auto a = squrt<int, 10000>();
 	//auto b = squrt<int, 1000>();
 	//std::cout << "a=" << a << "|b=" << b << std::endl;
@@ -45,6 +41,24 @@ int main()
 	//auto s =  mat.data;
 	//cv::imshow("0", mat);
 	//cv::waitKey();
+int main()
+{
+
+	auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
+	//auto canvas = SkiaBackedVK::makeBacked(0, 1000, 1000);
+	auto vk = VulkanContext::make(NULL, ::GetModuleHandle(nullptr), 1000, 1000);
+	auto backed = SkiaBackedVK::make(vk);
+	auto canvas = backed->makeBacked(0, 1000, 1000);
+	SkPaint paint;
+	paint.setARGB(128, 64, 89, 200);
+	canvas->drawRect({ 100,100,400,400 }, paint);
+	paint.setARGB(255, 0, 0, 255);
+	canvas->drawLine({ 0,0 }, { 400,400 }, paint);
+	uint8_t *buf = new uint8_t[1000 * 1000 * 3];
+	backed->readPixel(0, buf, 1000 * 1000 * 3);
+	Mat mat(1000,1000,CV_8UC3,buf);
+	cv::imshow("seraphim", mat);
+	cv::waitKey(0);
 	vector<string> files{ "","" };
 	FilesDataset<uint8_t, uint8_t, 28 * 28> dataset("D:/dataset/mnist/mnist", {"1","2"});
 
