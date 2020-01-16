@@ -1,12 +1,13 @@
 #ifndef VULKAN_ANDROID_CONTEXT_H
 #define VULKAN_ANDROID_CONTEXT_H
-
+#ifdef _WIN32
 #include<Windows.h>
+#endif
 #define NOMINMAX
 #undef max
 #undef min
 
-#include<vulkan.h>
+#include<vulkan/vulkan.h>
 #include<memory>
 #include<vector>
 #include <SkCanvas.h>
@@ -19,7 +20,11 @@ typedef HWND T_WINDOW;
 typedef HINSTANCE T_MODULE;
 typedef  uint8_t byte;
 #elif ANDROID
-typedef 
+typedef
+#else
+
+typedef void* T_WINDOW;
+typedef void* T_MODULE;
 #endif
 
 
@@ -42,7 +47,7 @@ class SkiaBackedVK;
 		struct InstanceHandle {
 			std::vector<const char*> vkInstanceExtensionsName;
 			std::vector<const char*> vkLayerExtensionName;
-			HINSTANCE hInstance{ nullptr };
+			T_MODULE hInstance{ nullptr };
 			VkInstance vkInstance{ VK_NULL_HANDLE };
 			VkDebugReportCallbackEXT debugReportCallbackExt;
 		};
@@ -88,7 +93,7 @@ class SkiaBackedVK;
 		/************************************************************************/
 	public:
 		friend class SkiaBackedVK;
-		static std::shared_ptr<VulkanContext> make(T_WINDOW window, T_MODULE hInstance, UINT32 width, UINT32 height) {
+		static std::shared_ptr<VulkanContext> make(T_WINDOW window, T_MODULE hInstance, uint32_t width, uint32_t height) {
 			if (gpVKContext.get() != nullptr)
 				return gpVKContext;
 			VulkanContext* c = new VulkanContext(window, hInstance, width, height);
@@ -112,8 +117,8 @@ class SkiaBackedVK;
 		static std::shared_ptr<VulkanContext> gpVKContext;
 		T_WINDOW window{ nullptr };
 		T_MODULE module{ nullptr };
-		UINT wWidth;
-		UINT wHeight;
+		uint32_t wWidth;
+		uint32_t wHeight;
 		InstanceHandle ih;
 		DeviceHandle   dh;
 		PresentHandle  ph{0};
@@ -122,7 +127,7 @@ class SkiaBackedVK;
 		uint32_t queryMemoryTypeIndex(uint32_t type,uint32_t require_properites);
 	public:
 
-		VulkanContext(HWND window, HINSTANCE hInstance, UINT32 width, UINT32 height);
+		VulkanContext(T_WINDOW window, T_MODULE hInstance, uint32_t width, uint32_t height);
 
 		void commit();
 
@@ -134,11 +139,11 @@ class SkiaBackedVK;
 		//}
 		void testRead();
 
-		void resize(UINT32 width, UINT32 height);
+		void resize(uint32_t width, uint32_t height);
 		void cleanBank(uint32_t image_index);
 		void clean();
 		void present();
-		void draw(byte* data, size_t cbData);
+		void draw(uint8_t* data, size_t cbData);
 		void copyToSkia();
 		void copyToVulakn();
 		~VulkanContext();

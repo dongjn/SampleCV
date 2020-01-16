@@ -1,4 +1,4 @@
-﻿// SampleCV.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// SampleCV.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 #include <iostream>
 #include <opencv2/opencv.hpp>
@@ -41,12 +41,12 @@ using namespace seraphim;
 	//auto s =  mat.data;
 	//cv::imshow("0", mat);
 	//cv::waitKey();
-int main()
+int main2()
 {
 
 	auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
 	//auto canvas = SkiaBackedVK::makeBacked(0, 1000, 1000);
-	auto vk = VulkanContext::make(NULL, ::GetModuleHandle(nullptr), 1000, 1000);
+	auto vk = VulkanContext::make(NULL, nullptr, 1000, 1000);
 	auto backed = SkiaBackedVK::make(vk);
 	auto canvas = backed->makeBacked(0, 1000, 1000);
 	SkPaint paint;

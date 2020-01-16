@@ -5,7 +5,7 @@
 #include"vulkan_context.h"
 #include<gpu/GrContext.h>
 #include<gpu/vk/GrVkExtensions.h>
-#include<gpu/vk/GrVkMemoryAllocator.h>
+//#include<gpu/vk/GrVkMemoryAllocator.h>
 #include<gpu/vk/GrVkBackendContext.h>
 #include<gpu/vk/GrVkVulkan.h>
 #include<memory>
@@ -65,7 +65,7 @@ namespace seraphim {
 	public:// Toolkit
 
 	public:
-		unique_ptr<SkCanvas> makeBacked(int tag, uint32_t w, uint32_t h, VkFormat ft = VK_FORMAT_B8G8R8A8_UINT, VkColorSpaceKHR  cs = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR);
+		unique_ptr<SkCanvas> makeBacked(int tag, uint32_t w, uint32_t h, VkFormat ft = VK_FORMAT_B8G8R8_UINT, VkColorSpaceKHR  cs = VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT);
 		unique_ptr<SkCanvas> resizeBacked(int tag, uint32_t width, uint32_t height);
 		std::unordered_map<int,std::shared_ptr<BackendHandle>>::iterator releaseBacked(int tag);
 		size_t readPixel(int tag, uint8_t* buf, size_t data);

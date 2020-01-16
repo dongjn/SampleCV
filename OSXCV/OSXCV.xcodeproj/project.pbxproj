@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2843D03E23CE1CAE00448614 /* libMoltenVK.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2843D03D23CE1CAE00448614 /* libMoltenVK.dylib */; };
+		2843D04D23CE1DFF00448614 /* vulkan_utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2843D03F23CE1DFE00448614 /* vulkan_utility.cpp */; };
+		2843D04E23CE1DFF00448614 /* skia_backed_vk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2843D04123CE1DFE00448614 /* skia_backed_vk.cpp */; };
+		2843D04F23CE1DFF00448614 /* vulkan_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2843D04223CE1DFE00448614 /* vulkan_context.cpp */; };
+		2843D05023CE1DFF00448614 /* SampleCV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2843D04423CE1DFE00448614 /* SampleCV.cpp */; };
+		2843D05123CE1DFF00448614 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2843D04623CE1DFE00448614 /* utility.cpp */; };
+		2843D05223CE1DFF00448614 /* mnist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2843D04A23CE1DFF00448614 /* mnist.cpp */; };
+		2843D05423CE292F00448614 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2843D05323CE292F00448614 /* CoreFoundation.framework */; };
+		2843D05623CE294B00448614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2843D05523CE294A00448614 /* CoreGraphics.framework */; };
+		2843D05823CE298E00448614 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2843D05723CE298E00448614 /* CoreText.framework */; };
+		2843D05A23CE2A1000448614 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2843D05923CE2A1000448614 /* CoreServices.framework */; };
+		2853E9B723CDCC2600DAC323 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2853E9B623CDCC2600DAC323 /* main.cpp */; };
+		28D70C5E23CF56A00085AB09 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D70C5D23CF56A00085AB09 /* Cocoa.framework */; };
+		28D70C6023CF57130085AB09 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D70C5F23CF57130085AB09 /* IOKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2853E9B123CDCC2600DAC323 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2843CFF823CE180E00448614 /* libMoltenVK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libMoltenVK.dylib; sourceTree = "<group>"; };
+		2843CFF923CE180E00448614 /* MoltenVK_icd.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoltenVK_icd.json; sourceTree = "<group>"; };
+		2843CFFB23CE180E00448614 /* MoltenVK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MoltenVK.framework; sourceTree = "<group>"; };
+		2843CFFD23CE180E00448614 /* libMoltenVK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMoltenVK.a; sourceTree = "<group>"; };
+		2843D00023CE180E00448614 /* vk_extx_portability_subset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_extx_portability_subset.h; sourceTree = "<group>"; };
+		2843D00223CE180E00448614 /* mvk_datatypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mvk_datatypes.h; sourceTree = "<group>"; };
+		2843D00323CE180E00448614 /* vk_mvk_moltenvk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_mvk_moltenvk.h; sourceTree = "<group>"; };
+		2843D00423CE180E00448614 /* mvk_vulkan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mvk_vulkan.h; sourceTree = "<group>"; };
+		2843D00623CE180E00448614 /* vk_layer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_layer.h; sourceTree = "<group>"; };
+		2843D00723CE180E00448614 /* vk_icd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_icd.h; sourceTree = "<group>"; };
+		2843D00823CE180E00448614 /* vulkan_vi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_vi.h; sourceTree = "<group>"; };
+		2843D00923CE180E00448614 /* vulkan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan.h; sourceTree = "<group>"; };
+		2843D00A23CE180E00448614 /* vk_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_platform.h; sourceTree = "<group>"; };
+		2843D00B23CE180E00448614 /* vulkan.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vulkan.hpp; sourceTree = "<group>"; };
+		2843D00C23CE180E00448614 /* vulkan_fuchsia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_fuchsia.h; sourceTree = "<group>"; };
+		2843D00D23CE180E00448614 /* vulkan_wayland.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_wayland.h; sourceTree = "<group>"; };
+		2843D00E23CE180E00448614 /* vulkan_win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_win32.h; sourceTree = "<group>"; };
+		2843D00F23CE180E00448614 /* vulkan_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_macos.h; sourceTree = "<group>"; };
+		2843D01023CE180E00448614 /* vulkan_xlib_xrandr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_xlib_xrandr.h; sourceTree = "<group>"; };
+		2843D01123CE180E00448614 /* vulkan_xcb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_xcb.h; sourceTree = "<group>"; };
+		2843D01223CE180E00448614 /* vulkan_ggp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_ggp.h; sourceTree = "<group>"; };
+		2843D01323CE180E00448614 /* vulkan_xlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_xlib.h; sourceTree = "<group>"; };
+		2843D01423CE180E00448614 /* vulkan_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_ios.h; sourceTree = "<group>"; };
+		2843D01523CE180E00448614 /* vulkan_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_core.h; sourceTree = "<group>"; };
+		2843D01623CE180E00448614 /* vk_sdk_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_sdk_platform.h; sourceTree = "<group>"; };
+		2843D01723CE180E00448614 /* vulkan_android.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_android.h; sourceTree = "<group>"; };
+		2843D01823CE180E00448614 /* vulkan_metal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan_metal.h; sourceTree = "<group>"; };
+		2843D03D23CE1CAE00448614 /* libMoltenVK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libMoltenVK.dylib; path = ../../../../../../../usr/local/lib/libMoltenVK.dylib; sourceTree = "<group>"; };
+		2843D03F23CE1DFE00448614 /* vulkan_utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vulkan_utility.cpp; path = ../SampleCV/vulkan_utility.cpp; sourceTree = "<group>"; };
+		2843D04023CE1DFE00448614 /* vulkan_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vulkan_context.h; path = ../SampleCV/vulkan_context.h; sourceTree = "<group>"; };
+		2843D04123CE1DFE00448614 /* skia_backed_vk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = skia_backed_vk.cpp; path = ../SampleCV/skia_backed_vk.cpp; sourceTree = "<group>"; };
+		2843D04223CE1DFE00448614 /* vulkan_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vulkan_context.cpp; path = ../SampleCV/vulkan_context.cpp; sourceTree = "<group>"; };
+		2843D04323CE1DFE00448614 /* mnist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mnist.h; path = ../SampleCV/mnist.h; sourceTree = "<group>"; };
+		2843D04423CE1DFE00448614 /* SampleCV.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SampleCV.cpp; path = ../SampleCV/SampleCV.cpp; sourceTree = "<group>"; };
+		2843D04523CE1DFE00448614 /* data_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_set.h; path = ../SampleCV/data_set.h; sourceTree = "<group>"; };
+		2843D04623CE1DFE00448614 /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utility.cpp; path = ../SampleCV/utility.cpp; sourceTree = "<group>"; };
+		2843D04723CE1DFE00448614 /* bith_iterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bith_iterator.h; path = ../SampleCV/bith_iterator.h; sourceTree = "<group>"; };
+		2843D04823CE1DFE00448614 /* vulkan_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vulkan_utility.h; path = ../SampleCV/vulkan_utility.h; sourceTree = "<group>"; };
+		2843D04923CE1DFE00448614 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = ../SampleCV/common.h; sourceTree = "<group>"; };
+		2843D04A23CE1DFF00448614 /* mnist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mnist.cpp; path = ../SampleCV/mnist.cpp; sourceTree = "<group>"; };
+		2843D04B23CE1DFF00448614 /* utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utility.h; path = ../SampleCV/utility.h; sourceTree = "<group>"; };
+		2843D04C23CE1DFF00448614 /* skia_backed_vk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = skia_backed_vk.h; path = ../SampleCV/skia_backed_vk.h; sourceTree = "<group>"; };
+		2843D05323CE292F00448614 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		2843D05523CE294A00448614 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2843D05723CE298E00448614 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		2843D05923CE2A1000448614 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		2853E9B323CDCC2600DAC323 /* OSXCV */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OSXCV; sourceTree = BUILT_PRODUCTS_DIR; };
+		2853E9B623CDCC2600DAC323 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		28D70C5D23CF56A00085AB09 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		28D70C5F23CF57130085AB09 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2853E9B023CDCC2600DAC323 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28D70C6023CF57130085AB09 /* IOKit.framework in Frameworks */,
+				28D70C5E23CF56A00085AB09 /* Cocoa.framework in Frameworks */,
+				2843D05A23CE2A1000448614 /* CoreServices.framework in Frameworks */,
+				2843D05823CE298E00448614 /* CoreText.framework in Frameworks */,
+				2843D05623CE294B00448614 /* CoreGraphics.framework in Frameworks */,
+				2843D05423CE292F00448614 /* CoreFoundation.framework in Frameworks */,
+				2843D03E23CE1CAE00448614 /* libMoltenVK.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2843CFF223CE16CA00448614 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28D70C5F23CF57130085AB09 /* IOKit.framework */,
+				28D70C5D23CF56A00085AB09 /* Cocoa.framework */,
+				2843D05923CE2A1000448614 /* CoreServices.framework */,
+				2843D05723CE298E00448614 /* CoreText.framework */,
+				2843D05523CE294A00448614 /* CoreGraphics.framework */,
+				2843D05323CE292F00448614 /* CoreFoundation.framework */,
+				2843D03D23CE1CAE00448614 /* libMoltenVK.dylib */,
+				2843CFF523CE180E00448614 /* MoltenVK */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2843CFF523CE180E00448614 /* MoltenVK */ = {
+			isa = PBXGroup;
+			children = (
+				2843CFF623CE180E00448614 /* macOS */,
+				2843CFFE23CE180E00448614 /* include */,
+			);
+			name = MoltenVK;
+			path = ../../../../../../../Library/Frameworks/MoltenVK;
+			sourceTree = "<group>";
+		};
+		2843CFF623CE180E00448614 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				2843CFF723CE180E00448614 /* dynamic */,
+				2843CFFA23CE180E00448614 /* framework */,
+				2843CFFC23CE180E00448614 /* static */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		2843CFF723CE180E00448614 /* dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				2843CFF823CE180E00448614 /* libMoltenVK.dylib */,
+				2843CFF923CE180E00448614 /* MoltenVK_icd.json */,
+			);
+			path = dynamic;
+			sourceTree = "<group>";
+		};
+		2843CFFA23CE180E00448614 /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				2843CFFB23CE180E00448614 /* MoltenVK.framework */,
+			);
+			path = framework;
+			sourceTree = "<group>";
+		};
+		2843CFFC23CE180E00448614 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				2843CFFD23CE180E00448614 /* libMoltenVK.a */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		2843CFFE23CE180E00448614 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				2843CFFF23CE180E00448614 /* vulkan-portability */,
+				2843D00123CE180E00448614 /* MoltenVK */,
+				2843D00523CE180E00448614 /* vulkan */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		2843CFFF23CE180E00448614 /* vulkan-portability */ = {
+			isa = PBXGroup;
+			children = (
+				2843D00023CE180E00448614 /* vk_extx_portability_subset.h */,
+			);
+			path = "vulkan-portability";
+			sourceTree = "<group>";
+		};
+		2843D00123CE180E00448614 /* MoltenVK */ = {
+			isa = PBXGroup;
+			children = (
+				2843D00223CE180E00448614 /* mvk_datatypes.h */,
+				2843D00323CE180E00448614 /* vk_mvk_moltenvk.h */,
+				2843D00423CE180E00448614 /* mvk_vulkan.h */,
+			);
+			path = MoltenVK;
+			sourceTree = "<group>";
+		};
+		2843D00523CE180E00448614 /* vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				2843D00623CE180E00448614 /* vk_layer.h */,
+				2843D00723CE180E00448614 /* vk_icd.h */,
+				2843D00823CE180E00448614 /* vulkan_vi.h */,
+				2843D00923CE180E00448614 /* vulkan.h */,
+				2843D00A23CE180E00448614 /* vk_platform.h */,
+				2843D00B23CE180E00448614 /* vulkan.hpp */,
+				2843D00C23CE180E00448614 /* vulkan_fuchsia.h */,
+				2843D00D23CE180E00448614 /* vulkan_wayland.h */,
+				2843D00E23CE180E00448614 /* vulkan_win32.h */,
+				2843D00F23CE180E00448614 /* vulkan_macos.h */,
+				2843D01023CE180E00448614 /* vulkan_xlib_xrandr.h */,
+				2843D01123CE180E00448614 /* vulkan_xcb.h */,
+				2843D01223CE180E00448614 /* vulkan_ggp.h */,
+				2843D01323CE180E00448614 /* vulkan_xlib.h */,
+				2843D01423CE180E00448614 /* vulkan_ios.h */,
+				2843D01523CE180E00448614 /* vulkan_core.h */,
+				2843D01623CE180E00448614 /* vk_sdk_platform.h */,
+				2843D01723CE180E00448614 /* vulkan_android.h */,
+				2843D01823CE180E00448614 /* vulkan_metal.h */,
+			);
+			path = vulkan;
+			sourceTree = "<group>";
+		};
+		2853E9AA23CDCC2600DAC323 = {
+			isa = PBXGroup;
+			children = (
+				2853E9D123CDCC5A00DAC323 /* New Group */,
+				2853E9B523CDCC2600DAC323 /* OSXCV */,
+				2853E9B423CDCC2600DAC323 /* Products */,
+				2843CFF223CE16CA00448614 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2853E9B423CDCC2600DAC323 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2853E9B323CDCC2600DAC323 /* OSXCV */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2853E9B523CDCC2600DAC323 /* OSXCV */ = {
+			isa = PBXGroup;
+			children = (
+				2853E9B623CDCC2600DAC323 /* main.cpp */,
+			);
+			path = OSXCV;
+			sourceTree = "<group>";
+		};
+		2853E9D123CDCC5A00DAC323 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				2843D04723CE1DFE00448614 /* bith_iterator.h */,
+				2843D04923CE1DFE00448614 /* common.h */,
+				2843D04523CE1DFE00448614 /* data_set.h */,
+				2843D04A23CE1DFF00448614 /* mnist.cpp */,
+				2843D04323CE1DFE00448614 /* mnist.h */,
+				2843D04423CE1DFE00448614 /* SampleCV.cpp */,
+				2843D04123CE1DFE00448614 /* skia_backed_vk.cpp */,
+				2843D04C23CE1DFF00448614 /* skia_backed_vk.h */,
+				2843D04623CE1DFE00448614 /* utility.cpp */,
+				2843D04B23CE1DFF00448614 /* utility.h */,
+				2843D04223CE1DFE00448614 /* vulkan_context.cpp */,
+				2843D04023CE1DFE00448614 /* vulkan_context.h */,
+				2843D03F23CE1DFE00448614 /* vulkan_utility.cpp */,
+				2843D04823CE1DFE00448614 /* vulkan_utility.h */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2853E9B223CDCC2600DAC323 /* OSXCV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2853E9BA23CDCC2600DAC323 /* Build configuration list for PBXNativeTarget "OSXCV" */;
+			buildPhases = (
+				2853E9AF23CDCC2600DAC323 /* Sources */,
+				2853E9B023CDCC2600DAC323 /* Frameworks */,
+				2853E9B123CDCC2600DAC323 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OSXCV;
+			productName = OSXCV;
+			productReference = 2853E9B323CDCC2600DAC323 /* OSXCV */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2853E9AB23CDCC2600DAC323 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = tqhl;
+				TargetAttributes = {
+					2853E9B223CDCC2600DAC323 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 2853E9AE23CDCC2600DAC323 /* Build configuration list for PBXProject "OSXCV" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2853E9AA23CDCC2600DAC323;
+			productRefGroup = 2853E9B423CDCC2600DAC323 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2853E9B223CDCC2600DAC323 /* OSXCV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2853E9AF23CDCC2600DAC323 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2843D05123CE1DFF00448614 /* utility.cpp in Sources */,
+				2843D04F23CE1DFF00448614 /* vulkan_context.cpp in Sources */,
+				2843D05023CE1DFF00448614 /* SampleCV.cpp in Sources */,
+				2853E9B723CDCC2600DAC323 /* main.cpp in Sources */,
+				2843D04D23CE1DFF00448614 /* vulkan_utility.cpp in Sources */,
+				2843D05223CE1DFF00448614 /* mnist.cpp in Sources */,
+				2843D04E23CE1DFF00448614 /* skia_backed_vk.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2853E9B823CDCC2600DAC323 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = "/Users/seraph/Downloads/skia-master/out/Release";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lskia",
+					"-lboost_system",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2853E9B923CDCC2600DAC323 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = "/Users/seraph/Downloads/skia-master/out/Release";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-lskia",
+					"-lboost_system",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2853E9BB23CDCC2600DAC323 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DA72V28M3M;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"/Users/seraph/Downloads/skia-master/include/core",
+					"/Users/seraph/Downloads/skia-master/include/utils",
+					"/Users/seraph/Downloads/skia-master/include/gpu",
+					"/Users/seraph/Downloads/skia-master/include/config",
+					"/Users/seraph/Downloads/skia-master/include",
+					"/Users/seraph/Downloads/skia-master/",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"/Users/seraph/Downloads/skia-master/out/Debug",
+				);
+				OTHER_LDFLAGS = (
+					"-lopencv_world",
+					"-lMoltenVK",
+					"-lskia",
+					"-lboost_system",
+					"-lboost_filesystem",
+					"-lglfw3",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2853E9BC23CDCC2600DAC323 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DA72V28M3M;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"/Users/seraph/Downloads/skia-master/include/core",
+					"/Users/seraph/Downloads/skia-master/include/utils",
+					"/Users/seraph/Downloads/skia-master/include/gpu",
+					"/Users/seraph/Downloads/skia-master/include/config",
+					"/Users/seraph/Downloads/skia-master/include",
+					"/Users/seraph/Downloads/skia-master/",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"/Users/seraph/Downloads/skia-master/out/Debug",
+				);
+				OTHER_LDFLAGS = (
+					"-lopencv_world",
+					"-lMoltenVK",
+					"-lskia",
+					"-lboost_system",
+					"-lboost_filesystem",
+					"-lglfw3",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2853E9AE23CDCC2600DAC323 /* Build configuration list for PBXProject "OSXCV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2853E9B823CDCC2600DAC323 /* Debug */,
+				2853E9B923CDCC2600DAC323 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2853E9BA23CDCC2600DAC323 /* Build configuration list for PBXNativeTarget "OSXCV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2853E9BB23CDCC2600DAC323 /* Debug */,
+				2853E9BC23CDCC2600DAC323 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2853E9AB23CDCC2600DAC323 /* Project object */;
+}

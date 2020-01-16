@@ -1,7 +1,8 @@
 #include "skia_backed_vk.h"
-#include<vulkan.h>
+#include<vulkan/vulkan.h>
 #include<set>
 #include<assert.h>
+#include<gpu/vk/GrVkExtensions.h>
 #include"utility.h"
 #include"vulkan_utility.h"
 namespace seraphim {
@@ -126,7 +127,7 @@ namespace seraphim {
 				else {
 					function = vkGetDeviceProcAddr(vkContext->dh.vkDevice, name);
 				}
-				assert(function!=nullptr);
+//				assert(function!=nullptr);
 				return (function);
 
 			};
@@ -217,8 +218,9 @@ namespace seraphim {
 		bindInfo.image = image;
 		bindInfo.memory = imageMemory;
 		bindInfo.memoryOffset = 0;
-		PFN_vkBindImageMemory2 myBindImageMemory2 = (PFN_vkBindImageMemory2)vkGetDeviceProcAddr(vkDevice, "vkBindImageMemory2");
-		vkResult = myBindImageMemory2(vkDevice, 1, &bindInfo);
+		PFN_vkBindImageMemory myBindImageMemory = (PFN_vkBindImageMemory)vkGetDeviceProcAddr(vkDevice, "vkBindImageMemory");
+        assert(myBindImageMemory);
+		vkResult = myBindImageMemory(vkDevice, image, imageMemory,0);
 
 	    //Make local Buffer Memory
 		VkBufferCreateInfo bufferCreateInfo;
@@ -249,7 +251,7 @@ namespace seraphim {
 		GrVkAlloc grVkAlloc(imageMemory,imageRequirements.size,bufferMemorySize - imageMemorySize, GrVkAlloc::kNoncoherent_Flag);
 		GrVkImageInfo grImageInfo(image, grVkAlloc, VK_IMAGE_TILING_LINEAR,
 			VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,
-			VK_FORMAT_R8G8B8A8_SRGB, 1);
+			VK_FORMAT_B8G8R8_UINT, 1);
 		GrBackendTexture grBackedTexture(w, h, grImageInfo);
 		sk_sp<SkColorSpace> colorSpace = SkColorSpace::MakeSRGB();
 		SkSurfaceProps *surfaceProps = nullptr;

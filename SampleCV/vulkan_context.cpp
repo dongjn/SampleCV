@@ -1,15 +1,20 @@
 #include"vulkan_context.h"
-#include<vulkan.h>
+#include<vulkan/vulkan.h>
+#ifdef _WIN32
 #include<vulkan_win32.h>
+#include<Windows.h>
+#include<debugapi.h>
+#endif
 #include<vector>
 #include<stdint.h>
-#include<Windows.h>
+
 #include<gpu/GrContext.h>
-#include<gpu/vk/GrVkVulkan.h>
-#include<gpu/vk/GrVkBackendContext.h>
-#include<gpu/vk/GrVkExtensions.h>
+
+//#include<gpu/vk/GrVkBackendContext.h>
+//#include<gpu/vk/GrVkExtensions.h>
+//#include<gpu/vk/GrVkVulkan.h>
 #include<cassert>
-#include<debugapi.h>
+
 #include<cstdlib>
 #include<memory>
 //#include<varargs.h>
@@ -52,7 +57,7 @@ namespace seraphim {
 	 * @param height
 	 * @param buffer
 	 */
-	HMODULE hModule;
+	T_MODULE hModule;
 	void VulkanContext::initGrContext() {
 		//		hModule = LoadLibrary(nullptr);
 		//		auto loadFunction = [this](const char* name, VkInstance instnance, VkDevice device)->PFN_vkVoidFunction {
@@ -352,17 +357,17 @@ namespace seraphim {
 	 //}
 
 
-	VulkanContext::VulkanContext(HWND w, HINSTANCE h, UINT32 width, UINT32 height) :window(w), module(h), wWidth(width), wHeight(height) {
+	VulkanContext::VulkanContext(T_WINDOW w, T_MODULE h, uint32_t width, uint32_t height) :window(w), module(h), wWidth(width), wHeight(height) {
 		if (window) {
 			hashSurface = true;
 
 			ih.vkInstanceExtensionsName.push_back(VK_KHR_SURFACE_EXTENSION_NAME);
-			ih.vkInstanceExtensionsName.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
+//			ih.vkInstanceExtensionsName.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
 
 			dh.vkDeviceExtensionName.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
 		}
-		ih.vkInstanceExtensionsName.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
-		dh.vkDeviceExtensionName.push_back(VK_KHR_BIND_MEMORY_2_EXTENSION_NAME);
+//		ih.vkInstanceExtensionsName.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
+//		dh.vkDeviceExtensionName.push_back(VK_KHR_BIND_MEMORY_2_EXTENSION_NAME);
 	}
 
 
@@ -415,7 +420,7 @@ namespace seraphim {
 		vkEnumerateInstanceExtensionProperties(nullptr, &count_extension,
 			instance_properties.data());
 		for (auto& p : instance_properties) {
-			printf("MATH_VULKAN", "instance name=%s  version=%d", p.extensionName, p.specVersion);
+			printf("MATH_VULKAN", "instance name=%s  version=%d\n", p.extensionName, p.specVersion);
 
 		}
 		VkInstanceCreateInfo instanceInfo;
@@ -434,10 +439,11 @@ namespace seraphim {
 		callbackCreateInfo.pNext = nullptr;
 		callbackCreateInfo.pUserData = nullptr;
 		callbackCreateInfo.pfnCallback = debugCallback;
-		assert(vkResult == VK_SUCCESS);
-		PFN_vkCreateDebugReportCallbackEXT createDebugReport = (PFN_vkCreateDebugReportCallbackEXT)vkGetInstanceProcAddr(ih.vkInstance, "vkCreateDebugReportCallbackEXT");
-		assert(createDebugReport);
-		vkResult = createDebugReport(ih.vkInstance, &callbackCreateInfo, nullptr, &ih.debugReportCallbackExt);
+//		assert(vkResult == VK_SUCCESS);
+//		PFN_vkCreateDebugReportCallbackEXT createDebugReport = (PFN_vkCreateDebugReportCallbackEXT)vkGetInstanceProcAddr(ih.vkInstance, "vkCreateDebugReportCallbackEXT");
+//		assert(createDebugReport);
+//        
+//		vkResult = createDebugReport(ih.vkInstance, &callbackCreateInfo, nullptr, &ih.debugReportCallbackExt);
 	}
 	/**
 	 *
@@ -757,6 +763,7 @@ namespace seraphim {
 
 	void VulkanContext::present()
 	{
+        /*
 		VkAcquireNextImageInfoKHR acquireInfo;
 		VkResult presentResult;
 		acquireInfo.sType = VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR;
@@ -780,6 +787,7 @@ namespace seraphim {
 		presentInfo.pWaitSemaphores = &ph.acquireSemaphore;
 		vkResult = vkQueuePresentKHR(dh.graphicQueue, &presentInfo);
 		assert(VK_SUCCESS == vkResult);
+         */
 	}
 
 	//************************************
@@ -791,7 +799,7 @@ namespace seraphim {
 	// Parameter: byte * data
 	// Parameter: size_t cbData
 	//************************************
-	void VulkanContext::draw(byte* data, size_t cbData)
+	void VulkanContext::draw(uint8_t* data, size_t cbData)
 	{
 
 	}
@@ -820,7 +828,7 @@ namespace seraphim {
 
 	}
 
-	void VulkanContext::resize(UINT32 width, UINT32 height) {
+	void VulkanContext::resize(uint32_t width, uint32_t height) {
 		initPresent();
 
 	}
