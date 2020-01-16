@@ -1,4 +1,4 @@
-﻿// SampleCV.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// SampleCV.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 #include <iostream>
 #include <opencv2/opencv.hpp>
@@ -43,18 +43,18 @@ using namespace seraphim;
 	//auto s =  mat.data;
 	//cv::imshow("0", mat);
 	//cv::waitKey();
-template<typename T,typename... Args>
-void test(T t,Args... args) {
-	printf("seraphim%d   t = %d\n ",t, sizeof...(args));
-	test(args...);
-}
-template<typename D>
-void test(D d) {
-	printf("seraphim call D\n");
-}
+//template<typename T,typename... Args>
+//void test(T t,Args... args) {
+//	printf("seraphim%d   t = %d\n ",t, sizeof...(args));
+//	test(args...);
+//}
+//template<typename D>
+//void test(D d) {
+//	printf("seraphim call D\n");
+//}
 int main()
 {
-	test(1, 2, 3, 4, 5);
+	
 	//test_mongo();
 	//auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
 	////auto canvas = SkiaBackedVK::makeBacked(0, 1000, 1000);
@@ -76,12 +76,10 @@ int main()
 	char label = '7';
 	uint8_t* buf = nullptr;
 	using ImageSample = Sample<uint32_t, uint32_t, char, uint8_t*>;
-	//auto image = make_sample<ImageSample>(width, height, label, buf);
-	using S0 = Sample<uint32_t>;
-	using S1 = Sample<uint32_t, uint32_t>;
-	
-	auto s = make_sample<S0>(width);
-	S1 s1 = S1(s, height);
-	//S1 s11 = make_sample<S1>(width, height);
-	return 0;
+    auto image = ImageSample(width,height,label,buf);
+    auto w = get_field<0, uint32_t>(image);
+    auto h = get_field<1, uint32_t>(image);
+    auto b = get_field<3, uint8_t*>(image);
+    std::cout<<w<<"|"<<h<<"|"<<(void*)b<<std::endl;
+    return 0;
 }

@@ -21,6 +21,7 @@
 		2853E9B723CDCC2600DAC323 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2853E9B623CDCC2600DAC323 /* main.cpp */; };
 		28D70C5E23CF56A00085AB09 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D70C5D23CF56A00085AB09 /* Cocoa.framework */; };
 		28D70C6023CF57130085AB09 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D70C5F23CF57130085AB09 /* IOKit.framework */; };
+		28F3AD9C23D095CC00A0E9B3 /* mongo_backend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28F3AD9B23D095CC00A0E9B3 /* mongo_backend.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,6 +87,9 @@
 		2853E9B623CDCC2600DAC323 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		28D70C5D23CF56A00085AB09 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		28D70C5F23CF57130085AB09 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		28F3AD9923D095CC00A0E9B3 /* mongo_backend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mongo_backend.h; path = ../SampleCV/mongo_backend.h; sourceTree = "<group>"; };
+		28F3AD9A23D095CC00A0E9B3 /* sample_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sample_base.h; path = ../SampleCV/sample_base.h; sourceTree = "<group>"; };
+		28F3AD9B23D095CC00A0E9B3 /* mongo_backend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mongo_backend.cpp; path = ../SampleCV/mongo_backend.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +253,9 @@
 		2853E9D123CDCC5A00DAC323 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				28F3AD9B23D095CC00A0E9B3 /* mongo_backend.cpp */,
+				28F3AD9923D095CC00A0E9B3 /* mongo_backend.h */,
+				28F3AD9A23D095CC00A0E9B3 /* sample_base.h */,
 				2843D04723CE1DFE00448614 /* bith_iterator.h */,
 				2843D04923CE1DFE00448614 /* common.h */,
 				2843D04523CE1DFE00448614 /* data_set.h */,
@@ -325,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2843D05123CE1DFF00448614 /* utility.cpp in Sources */,
+				28F3AD9C23D095CC00A0E9B3 /* mongo_backend.cpp in Sources */,
 				2843D04F23CE1DFF00448614 /* vulkan_context.cpp in Sources */,
 				2843D05023CE1DFF00448614 /* SampleCV.cpp in Sources */,
 				2853E9B723CDCC2600DAC323 /* main.cpp in Sources */,
@@ -474,6 +482,8 @@
 					"/Users/seraph/Downloads/skia-master/include",
 					"/Users/seraph/Downloads/skia-master/",
 					/usr/local/include,
+					/usr/local/include/mongocxx/v_noabi,
+					/usr/local/include/bsoncxx/v_noabi/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
@@ -486,6 +496,8 @@
 					"-lboost_system",
 					"-lboost_filesystem",
 					"-lglfw3",
+					"-lbsoncxx",
+					"-lmongocxx",
 				);
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -510,6 +522,8 @@
 					"/Users/seraph/Downloads/skia-master/include",
 					"/Users/seraph/Downloads/skia-master/",
 					/usr/local/include,
+					/usr/local/include/mongocxx/v_noabi,
+					/usr/local/include/bsoncxx/v_noabi/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
@@ -522,6 +536,8 @@
 					"-lboost_system",
 					"-lboost_filesystem",
 					"-lglfw3",
+					"-lbsoncxx",
+					"-lmongocxx",
 				);
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

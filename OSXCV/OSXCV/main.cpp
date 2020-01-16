@@ -69,7 +69,7 @@
 #include<MoltenVK/vk_mvk_moltenvk.h>
 #include <iostream>
 
-int main() {
+int main2() {
     glfwInit();
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);

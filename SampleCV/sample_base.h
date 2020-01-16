@@ -9,6 +9,9 @@ namespace seraphim {
 		Sample(NextType n, Type d) :next(n), data(d) {
 
 		}
+        Sample(Type d,T... args):data(d),next(args...){
+            
+        }
 	};
 
 	template<typename F> struct Sample<F> {
