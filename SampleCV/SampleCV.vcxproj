@@ -66,6 +66,7 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\skia.props" />
+    <Import Project="mongo.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -156,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="mnist.cpp" />
+    <ClCompile Include="mongo_backend.cpp" />
     <ClCompile Include="SampleCV.cpp" />
     <ClCompile Include="skia_backed_vk.cpp" />
     <ClCompile Include="utility.cpp" />
@@ -167,10 +169,14 @@
     <ClInclude Include="bith_iterator.h" />
     <ClInclude Include="data_set.h" />
     <ClInclude Include="mnist.h" />
+    <ClInclude Include="mongo_backend.h" />
     <ClInclude Include="skia_backed_vk.h" />
     <ClInclude Include="utility.h" />
     <ClInclude Include="vulkan_context.h" />
     <ClInclude Include="vulkan_utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sample_base.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

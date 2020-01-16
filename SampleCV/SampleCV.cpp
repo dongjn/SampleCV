@@ -1,4 +1,4 @@
-// SampleCV.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+﻿// SampleCV.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 #include <iostream>
 #include <opencv2/opencv.hpp>
@@ -11,6 +11,8 @@
 #include"bith_iterator.h"
 #include"data_set.h"
 #include"skia_backed_vk.h"
+#include"mongo_backend.h"
+#include"sample_base.h"
 using namespace std;
 using namespace cv;
 using namespace seraphim;
@@ -41,27 +43,45 @@ using namespace seraphim;
 	//auto s =  mat.data;
 	//cv::imshow("0", mat);
 	//cv::waitKey();
-int main2()
+template<typename T,typename... Args>
+void test(T t,Args... args) {
+	printf("seraphim%d   t = %d\n ",t, sizeof...(args));
+	test(args...);
+}
+template<typename D>
+void test(D d) {
+	printf("seraphim call D\n");
+}
+int main()
 {
-
-	auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
-	//auto canvas = SkiaBackedVK::makeBacked(0, 1000, 1000);
-	auto vk = VulkanContext::make(NULL, nullptr, 1000, 1000);
-	auto backed = SkiaBackedVK::make(vk);
-	auto canvas = backed->makeBacked(0, 1000, 1000);
-	SkPaint paint;
-	paint.setARGB(128, 64, 89, 200);
-	canvas->drawRect({ 100,100,400,400 }, paint);
-	paint.setARGB(255, 0, 0, 255);
-	canvas->drawLine({ 0,0 }, { 400,400 }, paint);
-	uint8_t *buf = new uint8_t[1000 * 1000 * 3];
-	backed->readPixel(0, buf, 1000 * 1000 * 3);
-	Mat mat(1000,1000,CV_8UC3,buf);
-	cv::imshow("seraphim", mat);
-	cv::waitKey(0);
-	vector<string> files{ "","" };
-	FilesDataset<uint8_t, uint8_t, 28 * 28> dataset("D:/dataset/mnist/mnist", {"1","2"});
-
-
+	test(1, 2, 3, 4, 5);
+	//test_mongo();
+	//auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
+	////auto canvas = SkiaBackedVK::makeBacked(0, 1000, 1000);
+	//auto vk = VulkanContext::make(NULL, ::GetModuleHandle(nullptr), 1000, 1000);
+	//auto backed = SkiaBackedVK::make(vk);
+	//auto canvas = backed->makeBacked(0, 1000, 1000);
+	//SkPaint paint;
+	//paint.setARGB(128, 64, 89, 200);
+	//canvas->drawRect({ 100,100,400,400 }, paint);
+	//paint.setARGB(255, 0, 0, 255);
+	//canvas->drawLine({ 0,0 }, { 400,400 }, paint);
+	//uint8_t *buf = new uint8_t[1000 * 1000 * 4];
+	//backed->readPixel(0, buf, 1000 * 1000 * 4);
+	//Mat mat(1000,1000,CV_8UC4,buf);
+	//cv::imshow("seraphim", mat);
+	//cv::waitKey(0);
+	uint32_t width = 1000;
+	uint32_t height = 1000;
+	char label = '7';
+	uint8_t* buf = nullptr;
+	using ImageSample = Sample<uint32_t, uint32_t, char, uint8_t*>;
+	//auto image = make_sample<ImageSample>(width, height, label, buf);
+	using S0 = Sample<uint32_t>;
+	using S1 = Sample<uint32_t, uint32_t>;
+	
+	auto s = make_sample<S0>(width);
+	S1 s1 = S1(s, height);
+	//S1 s11 = make_sample<S1>(width, height);
 	return 0;
 }
