@@ -55,7 +55,7 @@ using namespace seraphim;
 int main()
 {
 	
-	//test_mongo();
+	test_mongo();
 	//auto mnist = Mnist::createFormFile("D:/dataset/mnist/mnist");
 	////auto canvas = SkiaBackedVK::makeBacked(0, 1000, 1000);
 	//auto vk = VulkanContext::make(NULL, ::GetModuleHandle(nullptr), 1000, 1000);
@@ -75,11 +75,10 @@ int main()
 	uint32_t height = 1000;
 	char label = '7';
 	uint8_t* buf = nullptr;
+    vector<string> fields{"image","index_"};
 	using ImageSample = Sample<uint32_t, uint32_t, char, uint8_t*>;
-    auto image = ImageSample(width,height,label,buf);
-    auto w = get_field<0, uint32_t>(image);
-    auto h = get_field<1, uint32_t>(image);
-    auto b = get_field<3, uint8_t*>(image);
-    std::cout<<w<<"|"<<h<<"|"<<(void*)b<<std::endl;
+    MongoBacked<ImageSample> backed("mongodb://127.0.0.1:27017/seraph?readPreference=primary&appname=MongoDB%20Compass&ssl=false","mnist",fields);
+    MongoBacked<ImageSample>::SampleBitch  bitch(1024);
+    backed.getBitch(bitch);
     return 0;
 }

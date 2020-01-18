@@ -14,10 +14,15 @@ using bsoncxx::builder::stream::open_array;
 using bsoncxx::builder::stream::open_document;
 
 namespace seraphim {
+
+
+shared_ptr<mongocxx::instance> gMongoInstance{nullptr};
 void test_mongo() {
 	mongocxx::instance instance{};
-	mongocxx::client conn(mongocxx::uri("mongodb://192.168.1.106:27017/seraph?readPreference=primary&appname=MongoDB%20Compass&ssl=false"));
-	mongocxx::database mnist = conn["mnist"];
+//	mongocxx::client conn(mongocxx::uri("mongodb://192.168.1.106:27017/seraph?readPreference=primary&appname=MongoDB%20Compass&ssl=false"));
+    mongocxx::client conn(mongocxx::uri("mongodb://127.0.0.1:27017/seraph?readPreference=primary&appname=MongoDB%20Compass&ssl=false"));
+
+    mongocxx::database mnist = conn["mnist"];
 	mongocxx::collection train = mnist["test_2_2"];
 	auto builder = bsoncxx::builder::stream::document{};
 	uint8_t* data = new uint8_t[256];

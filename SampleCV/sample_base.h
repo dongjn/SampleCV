@@ -12,6 +12,9 @@ namespace seraphim {
         Sample(Type d,T... args):data(d),next(args...){
             
         }
+        Sample(){
+            
+        }
 	};
 
 	template<typename F> struct Sample<F> {
@@ -21,6 +24,9 @@ namespace seraphim {
 		Sample(Type d) :data(d) {
 
 		}
+        Sample(){
+            
+        }
 	};
 	template<int I,typename R,typename S>
 	R get_field(S sample) {
