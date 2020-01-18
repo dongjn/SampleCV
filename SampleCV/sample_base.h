@@ -7,10 +7,30 @@ using b_view = bsoncxx::document::view;
 using v_iterator = bsoncxx::document::view::iterator;
 
 
+
+
+
 struct Bytes{
     Bytes(const uint8_t* buf,uint32_t len){
         buf_ = new uint8_t[len];
         memcpy(buf_,buf,len);
+    }
+    Bytes(){
+        
+    }
+    
+    Bytes& operator=(const Bytes& o){
+        auto oo = std::move(o);
+        buf_ = oo.buf_;
+        oo.buf_ = nullptr;
+        return *this;
+    }
+    
+    Bytes(Bytes& o){
+        
+    }
+    Bytes(const Bytes& o){
+        
     }
     
     Bytes(Bytes&& o){
@@ -18,7 +38,7 @@ struct Bytes{
         o.buf_ = nullptr;
     }
     
-    Bytes(){
+    Bytes(const Bytes&& o){
         
     }
     uint8_t* buf_{nullptr};
@@ -29,7 +49,7 @@ struct Bytes{
 
 template<typename T>
 inline T element_to_data(v_iterator i){
-
+    
 }
 template<>
 inline uint32_t element_to_data<uint32_t>(v_iterator i){
@@ -61,7 +81,7 @@ template< typename F, typename... T> struct Sample {
         
     }
     Sample(v_iterator& itr):data(element_to_data<F>(itr)),next(++itr){
-
+        
     }
     Sample(){
         
@@ -82,6 +102,25 @@ template<typename F> struct Sample<F> {
         
     }
 };
+
+template<> struct Sample<uint8_t*>{
+    using Type = uint8_t*;
+    uint8_t* data;
+    Sample(uint8_t* d):data(d){
+        
+    }
+};
+
+template<typename... Args> struct Sample<uint8_t*,Args...>{
+    using Type = uint8_t*;
+    using NextType = Sample<Args...>;
+    Type data;
+    NextType next;
+    Sample(uint8_t* d,Args... args):data(d),next(args...){
+        
+    }
+};
+
 template<int I,typename R,typename S>
 R get_field(S sample) {
     if constexpr (I == 0) {

@@ -7,6 +7,9 @@
 #include<string>
 #include<iostream>
 #include<memory>
+#include <algorithm> // std::move_backward
+#include <random> // std::default_random_engine
+#include <chrono> // std::chrono::system_clock
 #include<mongocxx/client.hpp>
 #include<mongocxx/instance.hpp>
 #include<mongocxx/database.hpp>
@@ -14,6 +17,9 @@
 #include<bsoncxx/builder/basic/document.hpp>
 #include<bsoncxx/builder/basic/kvp.hpp>
 #include<bsoncxx/json.hpp>
+
+
+ 
 using std::string;
 using std::vector;
 using bsoncxx::builder::basic::kvp;
@@ -90,7 +96,10 @@ public:
     size_t getBitch(SampleBitch& dst){
         return 0;
     }
-    void shuffle();
+    void shuffle(){
+        unsigned seed = std::chrono::system_clock::now ().time_since_epoch ().count ();
+        std::shuffle (samples_.begin (), samples_.end (), std::default_random_engine (seed));
+    }
     void setBitchSize(size_t b){
         bitchSize_ = b;
     }

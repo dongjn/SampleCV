@@ -1,5 +1,6 @@
 // SampleCV.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
+#include<chrono>
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <SkCanvas.h>
@@ -33,6 +34,20 @@ int main(int argc,char** argv){
     using TestSample =  Sample<uint32_t, uint32_t,Bytes>;
     vector<string> v{"width","height","image"};
     auto backend = MongoBacked<TestSample>("mongodb://127.0.0.1/seraph","mnist",v);
+    auto clock = std::chrono::system_clock();
+    std::time_t tt = std::chrono::system_clock::to_time_t(clock.now());
+    std::cout <<" begin-" << ctime(&tt)<<std::endl;
+    Bytes a;
+    Bytes b;
+    std::swap(a,b);
+    for(int i = 0; i <1000;i++){
+        std::cout<<".";
+        backend.shuffle();
+        std::cout.flush();
+    }
+    std::cout<<std::endl;
+     std::time_t t1 = std::chrono::system_clock::to_time_t(clock.now());
+     std::cout <<" end-" << ctime(&t1);
     return 0;
 }
 
