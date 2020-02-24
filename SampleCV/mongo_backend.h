@@ -97,7 +97,7 @@ public:
         return 0;
     }
     void shuffle(){
-        unsigned seed = std::chrono::system_clock::now ().time_since_epoch ().count ();
+        auto seed = std::chrono::system_clock::now ().time_since_epoch ().count ();
         std::shuffle (samples_.begin (), samples_.end (), std::default_random_engine (seed));
     }
     void setBitchSize(size_t b){
